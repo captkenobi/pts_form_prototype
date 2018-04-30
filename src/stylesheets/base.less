@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: #333;
+}
+
+button, input, select, a {
+  outline: none;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.g-left {
+  float: left;
+}
+
+.g-right {
+  float: right;
+}
+
+.g-clear {
+  clear: both;
+}
+
+.g-slide {
+  position: relative;
+  max-width: 1920px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.g-container {
+  position: relative;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 15px;
+  height: 100%;
+}
+
+.g-w100 {
+  width: 100%;
+}
+
+.g-w50 {
+  width: 50%;
+}
+
+.g-input {
+  width: 100%;
+  height: 38px;
+  border: 1px solid #e9e3e3;
+  border-radius: 4px;
+  padding-left: 10px;
+  font-size: 14px;
+}
+
+.g-select {
+  position: relative;
+  height: 38px;
+  background-color: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+  overflow: hidden;
+  
+  option {
+    padding: 5px 0 !important;
+  }
+  
+  &::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 50px;
+    background-color: #e9e3e3;
+    pointer-events: none;
+    background-image: url(../images/downarrow.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 15px;
+  }
+  
+  select {
+    appearance: none;
+    border: 1px solid #e9e3e3;
+    border-radius: 4px;
+    height: 100%;
+    padding-left: 10px;
+    background-color: transparent;
+  }
+}
+
+.g-submit {
+  display: block;
+  margin: 0 0 0 auto;
+  width: 100%;
+  height: 68px;
+  font-weight: 600;
+  background-color: rgb(17, 204, 122);
+  color: #fff;
+  border: none;
+  font-size: 14px;
+  border-radius: 4px;
+}

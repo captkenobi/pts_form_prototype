@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Credits Page</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="stylesheets/index.css">
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+  <form id="main_form" action="#" method="post"></form>
+
+    <div class="g-slide order">
+        <div class="g-container">
+
+            <div class="order__right">
+                <div class="order__middle">
+                    <h3>Сумма займа</h3>
+                    <p>Определите необходимую для Вас сумму, а затем заполните форму</p>
+
+                    <div id="range">
+                        <div class="range__marker start"></div>
+                        <div class="range__marker center"></div>
+                        <div class="range__marker finish"></div>
+
+                        <div class="range__price k50">50 000</div>
+                        <div class="range__price k1000">1 000 000</div>
+                        <div class="range__price k2000">2 000 000</div>
+                    </div>
+
+                    <div class="price-wrapper">
+                        <input type="text" form="main_form" id="amount" value="450 000 &#8381;">
+                    </div>
+                </div>
+            </div><!-- left form's side-->
+
+
+            <div class="order__left">
+                <h2>НУЖНЫ ДЕНЬГИ?<br />МЫ ПОМОЖЕМ!</h2>
+
+                <div class="inputs">
+                    <div class="inputs__left g-left">
+                        <input type="text" class="g-input" form="main_form" placeholder="Ваш телефон">
+                    </div>
+                    <div class="inputs__right g-left">
+                        <input type="text" class="g-input" form="main_form" placeholder="Дата рождения">
+                    </div>
+                    <div class="g-clear"></div>
+                </div><!-- end of section-->
+
+                <div class="inputs">
+                    <div class="inputs__full">
+                        <input type="text" form="main_form" form="fio" class="g-input" placeholder="Ваше ФИО">
+                    </div>
+                </div>
+
+                <div class="inputs">
+                    <div class="inputs__full g-select">
+                        <select name="region" form="main_form" class="g-w100" id="">
+                            <option selected value="Ваш регион">Ваш регион</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="inputs">
+                    <div class="inputs__left g-left">
+                        <div class="inputs__full g-select">
+                            <select name="auto" form="main_form" class="g-w100">
+                                <option selected value="Ваш регион">Автомобиль</option>
+                                <option value="Отечественный">Отечественный</option>
+                                <option value="Зарубежный">Зарубежный</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="inputs__right g-left">
+                        <div class="inputs__full g-select">
+                            <select name="year" form="main_form" class="g-w100">
+                                <option selected value="Ваш регион">Год выпуска</option>
+                                <option value="2018">2018</option>
+                                <option value="2017">2017</option>
+                                <option value="2016">2016</option>
+                                <option value="2015">2015</option>
+                                <option value="2014">2014</option>
+                                <option value="2013">2013</option>
+                                <option value="2012">2012</option>
+                                <option value="2011">2011</option>
+                                <option value="2010">2010</option>
+                                <option value="2009">2009</option>
+                                <option value="2008">2008</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="g-clear"></div>
+                </div><!-- end of section-->
+
+                <div class="yesno">
+                    <div class="yesno__left g-left"><span>Тип владельца</span></div>
+                    <div class="yesno__right g-left">
+                        <div class="yesno__block">
+                            <input type="radio" id="owner1" form="main_form" name="owner" value="Собственник" checked>
+                            <label for="owner1">Собственник</label>
+                            <input type="radio" id="owner2" form="main_form" name="owner" value="По доверенности">
+                            <label for="owner2">Доверенность</label>
+                        </div>
+                    </div>
+                    <div class="g-clear"></div>
+                </div>
+
+                <div class="yesno">
+                    <div class="yesno__left g-left"><span>Автомобиль кредитный</span></div>
+                    <div class="yesno__right g-left">
+                        <div class="yesno__block">
+                            <input type="radio" id="credit1" form="main_form" name="credit" value="Собственник" checked>
+                            <label for="credit1">Да</label>
+                            <input type="radio" id="credit2" form="main_form" name="credit" value="По доверенности">
+                            <label for="credit2">Нет</label>
+                        </div>
+                    </div>
+                    <div class="g-clear"></div>
+                </div>
+
+                <div class="inputs">
+                    <input type="submit" class="g-submit" form="main_form" value="Узнать сейчас">
+                </div>
+
+            </div><!-- left form's side-->
+
+
+        </div><!-- endcontainer -->
+    </div><!-- endslide -->
+
+    <script>
+        $(function() {
+            $("#range").slider({
+                range: "max",
+                min: 50000,
+                max: 2000000,
+                step: 50000,
+                value: 450000,
+                slide: function(event, ui) {
+                    changeBgOn1000k(ui.value);
+
+                    var price = correctSum(ui.value) + " \u20bd";
+                    $("#amount").val(price);
+                }
+            });
+
+            $('#amount').bind("change keyup input click", function() {
+                if (this.value.match(/[^0-9]/g)) {
+                    this.value = this.value.replace(/[^0-9]/g, '');
+                }
+            });
+
+
+            $("#amount").on("change, blur", function() {
+                var userInput = $(this).val();
+                userInput = userInput.split(" ").join("");
+
+                (userInput < 50000) && (userInput = 50000);
+                (userInput > 2000000) && (userInput = 2000000);
+                (Number(userInput) === "NaN") && (userInput = 450000);
+                
+                $("#range").slider("value", userInput);
+                changeBgOn1000k(userInput);
+
+                var price = correctSum(userInput)  + " \u20bd";
+                $(this).val(price);
+            });
+
+            function changeBgOn1000k(userInput) {
+                if (userInput > 1000000) $(".center").css("background-color", "#ffeb3b");
+                else $(".center").css("background-color", "#ffffff");
+            }
+
+            function correctSum(sum) {
+                var sum = sum.toString();
+                return sum.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+            }
+        });
+    </script>
+</body>
+</html>
